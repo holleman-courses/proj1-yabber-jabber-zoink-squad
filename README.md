@@ -1,4 +1,4 @@
-# proj1
+# Project 1 Overview:
 ## Project 1 for ECGR 4127/5127 Machine Learning for the IoT
 ---
 Python code is under the `training` directory, and Arduino code is under the `embedded` directory.
