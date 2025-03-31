@@ -3,11 +3,9 @@ import numpy as np
 import subprocess
 
 def representative_data_gen():
-    # Replace this with your actual data loading logic
-    # This should yield normalized float32 samples in [0,1] range
     num_calibration_steps = 100
     for _ in range(num_calibration_steps):
-        # Create dummy input data matching your model's expected input
+        # Create dummy input data 
         dummy_input = np.random.rand(1, 96, 96, 1).astype(np.float32)
         yield [dummy_input]
 
@@ -19,7 +17,7 @@ converter = tf.lite.TFLiteConverter.from_keras_model(model)
 converter.optimizations = [tf.lite.Optimize.DEFAULT]
 converter.representative_dataset = representative_data_gen
 
-# Set full uint8 quantization
+# Set full int8 quantization
 converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
 converter.inference_input_type = tf.int8  # Input type
 converter.inference_output_type = tf.int8  # Output type
