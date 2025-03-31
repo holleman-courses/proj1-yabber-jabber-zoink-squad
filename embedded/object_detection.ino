@@ -94,7 +94,7 @@ void loop() {
       digitalWrite(LED_PIN, LOW);
     }
     else if (cmd == 'v') {
-      // View last captured image data
+      // View last captured image values
       Serial.println("Last captured image data (96x96):");
       for (int y = 0; y < RESIZED_HEIGHT; y++) {
         for (int x = 0; x < RESIZED_WIDTH; x++) {
