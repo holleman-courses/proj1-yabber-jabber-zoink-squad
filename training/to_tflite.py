@@ -12,7 +12,7 @@ def representative_data_gen():
 # Load the trained Keras model
 model = tf.keras.models.load_model("trained_model.h5")
 
-# Convert to TFLite with uint8 quantization
+# Convert to TFLite with int8 quantization
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 converter.optimizations = [tf.lite.Optimize.DEFAULT]
 converter.representative_dataset = representative_data_gen
