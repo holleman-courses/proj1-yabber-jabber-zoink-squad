@@ -46,7 +46,7 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, LOW);
   if (!is_initialized) {
-    // Pins for the built-in RGB LEDs on the Arduino Nano 33 BLE Sense
+    // Pins for the built-in RGB LED
     pinMode(LEDR, OUTPUT);
     pinMode(LEDG, OUTPUT);
     pinMode(LEDB, OUTPUT);
