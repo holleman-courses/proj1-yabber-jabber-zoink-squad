@@ -174,7 +174,7 @@ model.fit(X_train, y_train,
           batch_size=32,
           class_weight={0:1, 1:3})
 
-# Save final model
+# Save final model to .h5
 model.save('trained_model.h5')
 model = tf.keras.models.load_model('trained_model.h5')
 evaluate_model(model)
