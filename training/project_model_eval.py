@@ -57,7 +57,7 @@ def prepare_data():
 
     return train_images, train_labels, test_images, test_labels
 
-# Create compact model (~50K params)
+# Create compact model
 def build_model():
     model = Sequential([
         Conv2D(4, (3,3), activation='relu', input_shape=(96,96,1)),
@@ -80,7 +80,7 @@ def build_model():
     return model
 def preprocess(image, label, image_size=(96, 96)):
     """Resize, convert to grayscale, normalize, and return numpy arrays."""
-    image = tf.image.resize(image, image_size)  # Resize using TensorFlow (faster than OpenCV)
+    image = tf.image.resize(image, image_size)  # Resize using TensorFlow 
     image = tf.image.rgb_to_grayscale(image)  # Convert to grayscale
     image = image / 255.0  # Normalize
 
@@ -100,20 +100,20 @@ def load_stl10_data(image_size=(96, 96), batch_size=32):
     train_data = list(tfds.as_numpy(train_ds))
     test_data = list(tfds.as_numpy(test_ds))
 
-    # Unpack images and labels **correctly**
+    # Unpack images and labels 
     x_train, y_train = zip(*train_data)
     x_test, y_test = zip(*test_data)
 
     # Convert to NumPy arrays (using np.vstack for images and np.hstack for labels)
     x_train = np.vstack(x_train)
-    y_train = np.hstack(y_train)  # Fixes the "inhomogeneous shape" issue
+    y_train = np.hstack(y_train)  
     x_test = np.vstack(x_test)
     y_test = np.hstack(y_test)
 
     return (x_train, y_train), (x_test, y_test)
 
 def evaluate_model(model, image_size=(96, 96), batch_size=32):
-    # Load ONLY the test set (using the correct split name)
+    # Load only the test set 
     test_ds = tfds.load("stl10", split="test", as_supervised=True)
 
     # Preprocess test set
@@ -133,7 +133,7 @@ def evaluate_model(model, image_size=(96, 96), batch_size=32):
     # Evaluate binary classifier
     test_loss, test_acc = model.evaluate(x_test, y_test, verbose=0)
 
-    # Predictions (sigmoid outputs)
+    # Predictions 
     y_pred = model.predict(x_test, verbose=0)
     y_pred_class = (y_pred > 0.5).astype(int).flatten()
 
