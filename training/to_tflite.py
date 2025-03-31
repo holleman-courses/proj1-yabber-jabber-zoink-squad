@@ -25,7 +25,7 @@ converter.inference_output_type = tf.int8  # Output type
 # Convert the model
 tflite_model = converter.convert()
 
-# Save the TensorFlow Lite model
+# Save the TensorFlow Lite model as tflite
 model_filename = "trained_model.tflite"
 with open(model_filename, "wb") as f:
     f.write(tflite_model)
